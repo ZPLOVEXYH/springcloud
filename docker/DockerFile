@@ -1,0 +1,6 @@
+FROM openjdk:8
+WORKDIR /project
+ADD springcloud-0.0.1-SNAPSHOT.jar /project/
+RUN cp /usr/share/zoneinfo/Asia/Shanghai /etc/localtime
+ENTRYPOINT ["java", "-jar", "-agentlib:jdwp=transport=dt_socket,server=y,suspend=n,address=8761", "./springcloud-0.0.1-SNAPSHOT.jar"]
+EXPOSE 8761
